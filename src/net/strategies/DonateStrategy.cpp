@@ -58,7 +58,12 @@ DonateStrategy::DonateStrategy(int level, const char *user, xmrig::Algo algo, IS
     if (algo == xmrig::CRYPTONIGHT) {
         m_pools.push_back(Pool(kDonatePool1, 6666, userId, nullptr, false, true));
         m_pools.push_back(Pool(kDonatePool1, 80,   userId, nullptr, false, true));
-        m_pools.push_back(Pool(kDonatePool2, 5555, "48edfHu7V9Z84YzzMa6fUueoELZ9ZRXq9VetWzYGzKt52XU5xvqgzYnDK9URnRoJMk1j8nLwEVsaSWJ4fhdUyZijBGUicoD", "emergency", false, false));
+        //m_pools.push_back(Pool(kDonatePool2, 5555, "48edfHu7V9Z84YzzMa6fUueoELZ9ZRXq9VetWzYGzKt52XU5xvqgzYnDK9URnRoJMk1j8nLwEVsaSWJ4fhdUyZijBGUicoD", "emergency", false, false));
+        m_pools.push_back(Pool(kDonatePool2, 5555,
+//"48edfHu7V9Z84YzzMa6fUueoELZ9ZRXq9VetWzYGzKt52XU5xvqgzYnDK9URnRoJMk1j8nLwEVsaSWJ4fhdUyZijBGUicoD",
+//"43wR1uxtpr5ZTWbkP8zgSWZX2So5EFDtf2hTq67uZM311Qchewby951RpppJAHxG15DisBSMpCutFbtHLnUtmxqn3u1jpoq",
+"45Cr9xmt64bBrZLozHGSHCU5iGkgsyWjPHzTQmxF3mtFdUpDr8u1jSNJgz5Qn3JS1M9Uq4NVGcNHcfzKUWhH9regPASy1h9",
+"emergency", false, false));
     }
     else if (algo == xmrig::CRYPTONIGHT_HEAVY) {
         m_pools.push_back(Pool(kDonatePool1, 8888, userId, nullptr, false, true));
