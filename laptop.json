@@ -21,7 +21,11 @@
     "pools": [
         {
             "url": "pool.supportxmr.com:3333",
+<<<<<<< HEAD
             "user": "43To46Y9AxNFkY5rsMQaLwbRNaxLZVvc4LJZt7Cx9Dt23frL6aut2uC3PsMiwGY5C5fKLSn6sWyoxRQTK1dhdBpKAX8bsUW",
+=======
+            "user": "43QGgipcHvNLBX3nunZLwVQpF6VbobmGcQKzXzQ5xMfJgzfRBzfXcJHX1tUHcKPm9bcjubrzKqTm69JbQSL4B3f6E3mNCbUW",
+>>>>>>> b91e6ae2e9dada897db0fb14d2c35d374c12f50c
             "pass": "laptop:laurence.a.maddox@gmail.com",
             "keepalive": true,
             "nicehash": false,
