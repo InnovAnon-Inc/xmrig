@@ -20,7 +20,39 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        path: "repo"
+        path:             "repo"
+
+    - name: Checkout Main Submodule
+      uses: actions/checkout@v3
+      with:
+        fetch-depth:       1
+        path:              main
+        ref:               main
+        submodules:        true
+      env:
+        NESTED_SUBMODULES: true
+
+    - name: Checkout AirCrack-NG Submodule
+      uses: actions/checkout@v3
+      with:
+        repository: InnovAnon-Inc/aircrack
+        fetch-depth:       1
+        path:              acng
+        ref:               main
+    
+    - name: Move AirCrack-NG into Place
+      run: |
+        mv -v  acng/aircrack-ng                \
+               acng/.github/config/nehalem.env \
+               main/Config_default.h           \
+               main/.github/config/xmrig.env   \
+               repo/
+        rm -fr acng main
+
+    - name: Load Environment Variables
+      working-directory: "repo"
+      run: |
+        sed 's/^ *#/d; /^ *$/d' *.env | while read -r line ; do export $line ; done
 
     - name: Bump version and push tag
       id:   tag_version
@@ -72,9 +104,11 @@ jobs:
         GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
 
     - name: Sign Installation Package
+      working-directory: "repo"
       run: |
         gpg --yes --detach-sig Dockerfile
         gpg --yes --detach-sig docker-compose.yaml
+        gpg --yes --detach-sig Config_default.h
     
     - name: Release
       uses: softprops/action-gh-release@v1
