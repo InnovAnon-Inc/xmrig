@@ -42,10 +42,10 @@ jobs:
     
     - name: Move AirCrack-NG into Place
       run: |
-        mv -v  acng/aircrack-ng                \
-               acng/.github/config/nehalem.env \
-               main/Config_default.h           \
+        mv -v  acng/.github/config/nehalem.env \
                main/.github/config/xmrig.env   \
+               main/Config_default.h           \
+               main/xmrig                      \
                repo/
         rm -fr acng main
 
