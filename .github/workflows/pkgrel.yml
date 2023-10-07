@@ -42,17 +42,18 @@ jobs:
     
     - name: Move AirCrack-NG into Place
       run: |
-        mv -v  acng/.github/config/nehalem.env \
-               main/.github/config/xmrig.env   \
-               main/Config_default.h           \
-               main/xmrig                      \
+        mv -v  acng/.github/config/*.env \
+               main/.github/config/*.env \
+               main/Config_default.h     \
+               main/xmrig                \
                repo/
         rm -fr acng main
 
     - name: Load Environment Variables
       working-directory: "repo"
       run: |
-        sed 's/^ *#/d; /^ *$/d' *.env | while read -r line ; do export $line ; done
+        sed 's/^ *#/d; /^ *$/d' nehalem.env flags.env xmrig.env | \
+        while read -r line ; do export $line ; done
 
     - name: Bump version and push tag
       id:   tag_version
