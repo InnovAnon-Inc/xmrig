@@ -9,10 +9,10 @@ WORKDIR /xmrig/scripts
 ARG NPROC
 
 ARG  CFLAGS
-ENV  CFLAGS=" $CFLAGS -fprofile-generate=/var/teamhack/pgo/xmrig.prof -fprofile-abs-path -fuse-linker-plugin -flto -momit-leaf-frame-pointer -Ofast -g0 -fmerge-all-constants -fomit-frame-pointer -ftree-parallelize-loops=$NPROC"
+ENV  CFLAGS=" $CFLAGS -fprofile-use=/var/teamhack/pgo/xmrig.prof -fprofile-abs-path"
 
 ARG LDFLAGS
-ENV LDFLAGS="$LDFLAGS -fprofile-generate=/var/teamhack/pgo/xmrig.prof -fprofile-abs-path -fuse-linker-plugin -flto -fmerge-all-constants -fomit-frame-pointer -ftree-parallelize-loops=$NPROC -lgcov"
+ENV LDFLAGS="$LDFLAGS -fprofile-use=/var/teamhack/pgo/xmrig.prof -fprofile-abs-path"
 
 RUN bash -eu build_deps.sh
 
@@ -32,6 +32,7 @@ RUN sed -i "s/--89TxfrUmqJJcb1V124WsUzA78Xa3UYHt7Bg8RGMhXVeZYPN8cE5CZEk58Y1m23ZM
 COPY ./Config_default.h \
   src/core/config/Config_default.h
 
+COPY ./pgo/xmrig.prof /var/teamhack/pgo/xmrig.prof
 RUN cmake -S . -B build            \
   -DXMRIG_DEPS=scripts/deps        \
   -DBUILD_STATIC=ON                \
@@ -50,6 +51,5 @@ RUN VERBOSE=defined cmake --build build
 FROM scratch
 COPY --from=build /xmrig/build/xmrig /
 WORKDIR  /var/teamhack
-VOLUME ["/var/teamhack/pgo"]
 ENTRYPOINT ["/xmrig"]
 

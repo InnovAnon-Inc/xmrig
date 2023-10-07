@@ -1,10 +1,10 @@
 version: '3.8'
 services:
-  xmrig-pgo:
-    image: innovanon/xmrig-pgo
-    container_name:  xmrig-pgo
-    volumes:
-      - ./pgo:/var/teamhack/pgo:rw
+  xmrig-pg:
+    image: innovanon/xmrig-pg
+    container_name:  xmrig-pg
+    #volumes:
+    #  - ./pgo:/var/teamhack/pgo:rw
       #- syslog-client:/etc/rsyslog.d:ro
     restart: no
     #network_mode:    service:vpn-s1

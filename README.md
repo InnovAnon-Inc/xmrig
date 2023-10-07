@@ -1,4 +1,4 @@
-# xmrig [![xmrig](https://github.com/InnovAnon-Inc/xmrig/actions/workflows/pkgrel.yml/badge.svg)](https://github.com/InnovAnon-Inc/xmrig/actions/workflows/pkgrel.yml)
+# xmrig [![xmrig](https://github.com/InnovAnon-Inc/xmrig/actions/workflows/pkgrel.yml/badge.svg?branch=pg)](https://github.com/InnovAnon-Inc/xmrig/actions/workflows/pkgrel.yml?branch=pg)
 Dockerized Builder for Statically-Linked XMRig with Embedded Config using XMRig-Proxy
 ==========
 [![License Summary](https://img.shields.io/github/license/InnovAnon-Inc/xmrig?color=%23FF1100&label=Free%20Code%20for%20a%20Free%20World%21&logo=InnovAnon%2C%20Inc.&logoColor=%23FF1133&style=plastic)](https://tldrlegal.com/license/unlicense#summary)
