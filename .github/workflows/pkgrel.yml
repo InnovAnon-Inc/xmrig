@@ -45,6 +45,7 @@ jobs:
         mv -v  acng/.github/config/*.env \
                main/.github/config/*.env \
                main/Config_default.h     \
+               main/donate.h             \
                main/xmrig                \
                repo/
         rm -fr acng main

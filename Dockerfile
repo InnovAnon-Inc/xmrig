@@ -31,14 +31,14 @@ ARG WALLET
 RUN bash -eu build_deps.sh
 
 WORKDIR /xmrig
-RUN sed -i 's/--kMinimumDonateLevel = 1;/kMinimumDonateLevel = 0;/'                                                       \
-  src/donate.h                                                                                                            \
-&&  sed -i "s/--donate.v2.xmrig.com:3333/$DONATE_HOST/"                                                                   \
-  src/core/config/Config_default.h                                                                                        \
-&&  sed -i "s/--xmrig.moneroocean.stream/$DONATE_STRATEGY/"                                                               \
+#RUN sed -i "s/--donate.v2.xmrig.com:3333/$DONATE_HOST/"                                                                   \
+#  src/core/config/Config_default.h                                                                                        \
+RUN sed -i "s/--xmrig.moneroocean.stream/$DONATE_STRATEGY/"                                                               \
   src/net/strategies/DonateStrategy.cpp                                                                                   \
 &&  sed -i "s/--89TxfrUmqJJcb1V124WsUzA78Xa3UYHt7Bg8RGMhXVeZYPN8cE5CZEk58Y1m23ZMLHN7wYeJ9da5n5MXharEjrm41hSnWHL/$WALLET/" \
   src/net/strategies/DonateStrategy.cpp
+
+COPY ./donate.h src/donate.h
 COPY ./Config_default.h \
   src/core/config/Config_default.h
 

@@ -21,4 +21,9 @@ services:
     #    condition: service_started
     #  teamhack_dns:
     #    condition: service_healthy
+    logging:
+      driver:  "syslog"
+      #options:
+      #  max-size: "10m"
+      #  max-file:  "5"
  
