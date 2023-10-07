@@ -9,10 +9,10 @@ WORKDIR /xmrig/scripts
 ARG NPROC
 
 ARG  CFLAGS
-ENV  CFLAGS=" $CFLAGS -fprofile-generate=/var/teamhack/pgo/xmrig.prof -fprofile-abs-path -fuse-linker-plugin -flto -momit-leaf-frame-pointer -Ofast -g0 -fmerge-all-constants -fomit-frame-pointer -ftree-parallelize-loops=$NPROC"
+ENV  CFLAGS=" $CFLAGS -fprofile-generate=/var/teamhack/pgo/xmrig.prof -fprofile-abs-path"
 
 ARG LDFLAGS
-ENV LDFLAGS="$LDFLAGS -fprofile-generate=/var/teamhack/pgo/xmrig.prof -fprofile-abs-path -fuse-linker-plugin -flto -fmerge-all-constants -fomit-frame-pointer -ftree-parallelize-loops=$NPROC -lgcov"
+ENV LDFLAGS="$LDFLAGS -fprofile-generate=/var/teamhack/pgo/xmrig.prof -fprofile-abs-path -lgcov"
 
 RUN bash -eu build_deps.sh
 
